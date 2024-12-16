@@ -1,4 +1,4 @@
-module github.com/ciehanski/libgen-cli
+module github.com/alrawas/libgen-cli
 
 go 1.20
 
