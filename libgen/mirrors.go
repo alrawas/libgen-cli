@@ -61,12 +61,12 @@ var SearchMirrors = []url.URL{
 var DownloadMirrors = []url.URL{
 	{
 		Scheme: "https",
-		Host:   "library.lol",
+		Host:   "library.gift",
 		Path:   "main/",
 	},
 	{
 		Scheme: "https",
-		Host:   "libgen.pm",
+		Host:   "libgen.li",
 		Path:   "ads",
 	},
 }
