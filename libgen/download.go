@@ -89,7 +89,7 @@ func GetDownloadURL(book *Book, useIpfs bool) error {
 	tries := 3
 	for tries >= x {
 		switch chosenMirror.Hostname() {
-		case "library.lol":
+		case "library.gift":
 			if useIpfs {
 				if err := getLibraryLolURL(book, true); err != nil {
 					return err
@@ -101,7 +101,7 @@ func GetDownloadURL(book *Book, useIpfs bool) error {
 					}
 				}
 			}
-		case "libgen.pm":
+		case "libgen.li":
 			if !useIpfs {
 				if err := getLibgenPMURL(book); err != nil {
 					if err := getLibraryLolURL(book, false); err != nil {
