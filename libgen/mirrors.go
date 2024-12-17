@@ -67,7 +67,7 @@ var DownloadMirrors = []url.URL{
 	{
 		Scheme: "https",
 		Host:   "libgen.li",
-		Path:   "ads",
+		Path:   "ads.php?md5=",
 	},
 }
 
