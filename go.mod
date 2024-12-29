@@ -5,6 +5,7 @@ go 1.20
 require (
 	github.com/cheggaaa/pb/v3 v3.1.0
 	github.com/chzyer/readline v1.5.1
+	github.com/ciehanski/libgen-cli v1.1.0
 	github.com/dustin/go-humanize v1.0.1
 	github.com/fatih/color v1.13.0
 	github.com/ipfs/boxo v0.13.1

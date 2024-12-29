@@ -1,0 +1,4 @@
+@todesktop/runtime: skipping autoUpdater initialization because application is not in AppImage.
+[90m[main 2024-12-29T14:44:02.786Z][0m update#setState disabled
+[90m[main 2024-12-29T14:44:02.811Z][0m update#ctor - updates are disabled as there is no update URL
+[91m[main 2024-12-29T14:44:05.435Z][0m vscode-file: Refused to load resource /tmp/.mount_cursorDNehtc/resources/app/extensions/theme-seti/icons/seti.woff from vscode-file: protocol (original URL: vscode-file://vscode-app/tmp/.mount_cursorDNehtc/resources/app/extensions/theme-seti/icons/seti.woff)
