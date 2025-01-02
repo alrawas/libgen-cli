@@ -203,7 +203,7 @@ func getLibraryLolURL(book *Book, useIpfs bool) error {
 }
 
 func getLibgenPMURL(book *Book) error {
-	queryURL := DownloadMirrors[1].String() + "?md5=" + book.Md5
+	queryURL := "https://libgen.li/ads" + book.Md5
 	book.PageURL = queryURL
 
 	b, err := getBody(queryURL)
