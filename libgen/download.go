@@ -225,7 +225,13 @@ func getLibraryLolURL(book *Book, useIpfs bool) error {
 
 // New helper function to validate download URLs
 func validateDownloadURL(url string) error {
-	resp, err := http.Head(url)
+	client := &http.Client{
+		CheckRedirect: func(req *http.Request, via []*http.Request) error {
+			return nil // Allow up to 10 redirects by default
+		},
+	}
+
+	resp, err := client.Head(url)
 	if err != nil {
 		return fmt.Errorf("failed to check content type: %w", err)
 	}
