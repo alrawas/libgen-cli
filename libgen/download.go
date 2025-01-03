@@ -237,7 +237,6 @@ func validateDownloadURL(url string) error {
 		"application/x-epub+zip",
 		"application/octet-stream",
 		"application/epub",
-		"application/zip",
 		"application/x-mobipocket-ebook",
 		"application/pdf",
 	}
