@@ -170,6 +170,21 @@ func DownloadDbdump(filename string, outputPath string) error {
 	return nil
 }
 
+func GetDownloadURLNew(book *Book) error {
+	// Try IPFS first through library.gift
+	if err := getLibraryLolURL(book, true); err != nil {
+		// If IPFS fails, try regular library.gift
+		if err := getLibraryLolURL(book, false); err != nil {
+			return fmt.Errorf("failed to get download URL: %w", err)
+		}
+	}
+
+	if book.DownloadURL == "" {
+		return fmt.Errorf("unable to retrieve download link for desired resource")
+	}
+	return nil
+}
+
 func getLibraryLolURL(book *Book, useIpfs bool) error {
 	queryURL := DownloadMirrors[0].String() + book.Md5
 	book.PageURL = queryURL
@@ -195,6 +210,32 @@ func getLibraryLolURL(book *Book, useIpfs bool) error {
 		if downloadURL == nil {
 			return errors.New("no valid download LibraryLol download URL found")
 		}
+	}
+
+	// Validate content type
+	resp, err := http.Head(string(downloadURL))
+	if err != nil {
+		return fmt.Errorf("failed to check content type: %w", err)
+	}
+	defer resp.Body.Close()
+
+	contentType := strings.ToLower(resp.Header.Get("Content-Type"))
+	validTypes := []string{
+		"application/epub+zip",
+		"application/x-mobipocket-ebook",
+		"application/pdf",
+	}
+
+	isValidType := false
+	for _, validType := range validTypes {
+		if strings.Contains(contentType, validType) {
+			isValidType = true
+			break
+		}
+	}
+
+	if !isValidType {
+		return fmt.Errorf("invalid content type: %s", contentType)
 	}
 
 	book.DownloadURL = string(downloadURL)
