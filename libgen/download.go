@@ -202,7 +202,7 @@ func getLibraryLolURL(book *Book, useIpfs bool) error {
 			// Fallback to cloudflare-ipfs.com
 			downloadURL = findMatch(libraryLolIPFSCFReg, b)
 			if downloadURL == nil {
-				return errors.New("no valid download LibraryLol download URL found")
+				return errors.New("no valid download LibraryLol ipfs download URL found")
 			}
 		}
 	} else {
